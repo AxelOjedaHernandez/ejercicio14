@@ -1,0 +1,41 @@
+<div class="container">
+    <!-- terminar si spring boot me dice si tiene credenciales validas -->
+    @if (usuarioLogeado){
+        <h1>Listado de usuarios</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">nombre</th>
+                <th scope="col">sueldo</th>
+                <th scope="col">estado</th>
+                <th scope="col">acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+                @for (usuario of usuarios; track usuario.id) {
+                    <tr>
+                        <th scope="row">{{ usuario.id }}</th>
+                        <td>{{ usuario.nomber }}</td>
+                        <td>{{ usuario.sueldo }}</td>
+                        @if (usuario.activo){
+                            <td>Activo</td>
+                        }
+                        @else{
+                            <td>Inactivo</td>
+                        }
+                        <td>
+                            <button type="button" class="btn btn-primary">Actualizar</button>
+                            &nbsp;
+                            <button type="button" class="btn btn-danger">Elimiinar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    @else{
+        <h1>Es necesario iniciar sesion</h1>
+    }
+    
+</div>
